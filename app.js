@@ -4,13 +4,11 @@ function addAmigo() {
     if (amigo != '') {
         amigos.push(amigo);
     } else {
-        let campo = document.querySelector('h2');
-        campo.innerHTML = 'Por favor, insira um nome.';
+        mudarTexto('resultado', "Por favor, insira um nome.");
+        mudarCor('resultado','#df0529');
     }
     limparNome();
     mostrarAmigos();
-    
-    return console.log(amigos)
 }
 
 function limparNome() {
@@ -33,11 +31,20 @@ function mostrarAmigos() {
 function sortearAmigo() {
     if (amigos.length > 0) {
         let indice = Math.floor((Math.random()*amigos.length));
-        let campo = document.getElementById('resultado');
-        campo.innerHTML = `Seu amigo secreto é ${amigos[indice]}`;
+        mudarTexto('resultado',`Seu amigo secreto é ${amigos[indice]}`)
     } else {
-        let campo = document.getElementById('resultado');
-        campo.innerHTML = 'A lista está vazia! Você não tem amigos?';
+        mudarCor('resultado','#df0529');
+        mudarTexto('resultado', 'A lista está vazia! Você não tem amigos?');
     }
 
+}
+
+function mudarTexto(id, texto) {
+    let campo = document.getElementById(id);
+    campo.innerHTML = texto;
+}
+
+function mudarCor(id,cor) {
+    let novaCor = document.getElementById(id);
+        novaCor.style.color = cor;
 }

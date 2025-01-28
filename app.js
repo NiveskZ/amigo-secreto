@@ -39,6 +39,7 @@ function sortearAmigo() {
     if (amigos.length > 0) {
         let indice = Math.floor((Math.random()*amigos.length));
         mudarTexto('resultado',`Seu amigo secreto é ${amigos[indice]}`)
+        mudarCor('resultado','#05DF05');
     } else {
         mudarCor('resultado','#df0529');
         mudarTexto('resultado', 'A lista está vazia! Você não tem amigos?');

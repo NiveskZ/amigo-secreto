@@ -2,13 +2,20 @@ let amigos = [];
 function addAmigo() {
     let amigo = document.querySelector('input').value;
     if (amigo != '') {
-        amigos.push(amigo);
+        if (amigos.includes(amigo)){
+            mudarTexto('resultado', "Nome já está na lista. Seja mais especifíco para não ter confusões!");
+            mudarCor('resultado','#df0529');
+        } else {
+            amigos.push(amigo);
+            mudarTexto('resultado','');
+        }
     } else {
         mudarTexto('resultado', "Por favor, insira um nome.");
         mudarCor('resultado','#df0529');
     }
     limparNome();
     mostrarAmigos();
+
 }
 
 function limparNome() {
@@ -48,3 +55,4 @@ function mudarCor(id,cor) {
     let novaCor = document.getElementById(id);
         novaCor.style.color = cor;
 }
+console.log('abc')

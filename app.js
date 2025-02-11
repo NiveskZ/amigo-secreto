@@ -1,13 +1,18 @@
-let amigos = [];
+let amigosObj = new Object();
+let amigosArray = Object.values(amigosObj);
+
 function addAmigo() {
-    let amigo = document.querySelector('input').value;
+    let amigo = document.querySelector('input').value.trim();
+    
     if (amigo != '') {
-        if (amigos.includes(amigo)){
+        if (amigosArray.includes(amigo)){
             mudarTexto('resultado', "Nome já está na lista. Seja mais especifíco para não ter confusões!");
             mudarCor('resultado','#df0529');
         } else {
-            amigos.push(amigo);
+            amigosObj[document.querySelector('input').value.trim()] = amigo;
+            //amigos.push(amigo);
             mudarTexto('resultado','');
+            console.log(amigosObj)
         }
     } else {
         mudarTexto('resultado', "Por favor, insira um nome.");
@@ -15,8 +20,21 @@ function addAmigo() {
     }
     limparNome();
     mostrarAmigos();
-
+    
 }
+amigo.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      addAmigo();
+    }
+});
+
+function removeAmigo() {
+    let amigoId = document.getElementById('remove').value;  
+    delete amigosObj[amigoId];
+    console.log(amigoId);
+    mostrarAmigos();
+}
+
 
 function limparNome() {
     amigo = document.querySelector('input');
@@ -26,12 +44,14 @@ function limparNome() {
 function mostrarAmigos() {
     let listaAmigos = document.getElementById('listaAmigos');
     listaAmigos.innerHTML = "";
-
+    
     let nomes = '';
-    for (let i = 0; i< amigos.length; i++) {
-        nomes += "<li><strong>" + amigos[i] + '</strong></li>';
+    amigosArray = Object.values(amigosObj);
+    console.log(amigosArray);
+    for (let i = 0; i< amigosArray.length; i++) {
+        nomes += `<li><strong>` + amigosArray[i] + `</strong> <button id="remove" class="button-remove" value=${amigosArray[i]} onclick="removeAmigo()">x</button></li>`;
+        removeBtns = document.querySelectorAll('.button-remove');
     }
-
     listaAmigos.innerHTML = nomes;
 }
 
@@ -56,4 +76,3 @@ function mudarCor(id,cor) {
     let novaCor = document.getElementById(id);
         novaCor.style.color = cor;
 }
-console.log('abc')

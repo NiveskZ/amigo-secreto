@@ -10,7 +10,6 @@ function addAmigo() {
             mudarCor('resultado','#df0529');
         } else {
             amigosObj[document.querySelector('input').value.trim()] = amigo;
-            //amigos.push(amigo);
             mudarTexto('resultado','');
             console.log(amigosObj)
         }
@@ -49,17 +48,18 @@ function mostrarAmigos() {
     amigosArray = Object.values(amigosObj);
     console.log(amigosArray);
     for (let i = 0; i< amigosArray.length; i++) {
-        nomes += `<li><strong>` + amigosArray[i] + `</strong> <button id="remove" class="button-remove" value=${amigosArray[i]} onclick="removeAmigo(this)">x</button></li>`;
-        removeBtns = document.querySelectorAll('.button-remove');
+        nomes += `<li><strong>` + amigosArray[i] + `</strong> <button id="remove${i}" class="button-remove" value=${amigosArray[i]} onclick="removeAmigo(this)">x</button></li>`;
     }
     listaAmigos.innerHTML = nomes;
 }
 
 function sortearAmigo() {
-    if (amigos.length > 0) {
-        let indice = Math.floor((Math.random()*amigos.length));
-        mudarTexto('resultado',`Seu amigo secreto é ${amigos[indice]}`)
+    if (amigosArray.length > 0) {
+        let indice = Math.floor((Math.random()*amigosArray.length));
+        mudarTexto('resultado',`Seu amigo secreto é ${amigosArray[indice]}`);
         mudarCor('resultado','#05DF05');
+        document.getElementById('remove'+indice).click();
+
     } else {
         mudarCor('resultado','#df0529');
         mudarTexto('resultado', 'A lista está vazia! Você não tem amigos?');

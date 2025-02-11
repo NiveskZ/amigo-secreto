@@ -13,3 +13,13 @@ Um aplicativo web simples para sortear seu amigo secreto nas suas festas e comem
 ## 📁 Acesso ao projeto
 
 É possível acessar e testar o projeto através do link: https://amigo-secreto-chi-lac.vercel.app/
+
+## :hammer: Funcionalidades do projeto
+
+- Não deixa você repetir nomes.
+- Sorteia um nome aleatório entre os colocados na lista.
+
+## 🛠️ Abrir e rodar o projeto
+
+Um exemplo de como o projeto funciona abaixo.
+![firefox_EappeADpgM](https://github.com/user-attachments/assets/3bd91e38-4aa6-418a-ae7d-a4070ef10b99)
